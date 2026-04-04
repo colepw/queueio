@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QueueIO</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <h1>QueueIO</h1>
+    <button id="ask-btn" onclick="toggleInput()">ASK</button>
+    <div id="input-area">
+      <textarea id="q-input" placeholder="Type your question..."></textarea>
+      <button id="submit-btn" onclick="submitQuestion()">SUBMIT</button>
+    </div>
+    <div id="queue"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -7,10 +7,8 @@
    Settings → API → Project URL & anon/public key
    ───────────────────────────────────────────── */
 
-require('dotenv').config();
-
-const SUPABASE_URL  = process.env.SUPABASE_URL;
-const SUPABASE_ANON = process.env.SUPABASE_ANON;
+const SUPABASE_URL  = 'https://zjzkrgehsojwqfqvsbqg.supabase.co';
+const SUPABASE_ANON = 'sb_publishable_ldieBNYwmSKazqIY4DfNCw_toh_vvAZ';
 
 /* ─── Init ─── */
 

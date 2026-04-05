@@ -7,22 +7,227 @@
 body {
   background: #3d3d3d;
   font-family: sans-serif;
+  min-height: 100vh;
 }
 
-#app {
+.hidden {
+  display: none !important;
+}
+
+/* ── LOBBY ── */
+
+#lobby {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 2rem 1rem;
 }
 
-h1 {
+#lobby h1 {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 2rem;
+}
+
+.lobby-card {
+  background: #4a4a4a;
+  border: 1.5px solid #999;
+  border-radius: 12px;
+  padding: 2rem 2rem 1.5rem;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#generate-btn {
+  width: 100%;
+  background: #5b52d6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 11px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+#generate-btn:hover {
+  background: #4a42c0;
+}
+
+#generate-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.divider {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 1.25rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #777;
+}
+
+.divider span {
+  color: #999;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.join-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+#join-input {
+  flex: 1;
+  background: #3d3d3d;
+  border: 1.5px solid #888;
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  padding: 8px 10px;
+  text-transform: uppercase;
+  font-family: monospace;
+  min-width: 0;
+}
+
+#join-input:focus {
+  outline: none;
+  border-color: #5b52d6;
+}
+
+#join-btn {
+  background: #555;
+  color: #e0e0e0;
+  border: 1.5px solid #888;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+#join-btn:hover {
+  background: #5b52d6;
+  border-color: #5b52d6;
+  color: #fff;
+}
+
+#join-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#lobby-error {
+  color: #f0a0a0;
+  font-size: 13px;
+  margin-top: 0.75rem;
+  min-height: 18px;
+  text-align: center;
+}
+
+/* ── ROOM ── */
+
+#room {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem 2rem;
+}
+
+#room-header {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.75rem 0 1.25rem;
+  border-bottom: 1px solid #555;
+  margin-bottom: 1.5rem;
+}
+
+#room-header h1 {
   color: #fff;
   font-size: 28px;
   font-weight: 700;
-  margin-bottom: 1.5rem;
   letter-spacing: 0.5px;
+  margin-bottom: 0.6rem;
+}
+
+#room-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#room-code-display {
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  color: #a89fff;
+  background: #38356a44;
+  border: 1px solid #5b52d655;
+  border-radius: 6px;
+  padding: 4px 14px;
+  text-transform: uppercase;
+}
+
+#owner-badge {
+  background: #5b52d6;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+#leave-btn {
+  background: none;
+  border: 1px solid #777;
+  border-radius: 5px;
+  color: #aaa;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding: 4px 10px;
+}
+
+#leave-btn:hover {
+  border-color: #c97070;
+  color: #f0a0a0;
+}
+
+#room-body {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #ask-btn {
@@ -46,7 +251,7 @@ h1 {
   display: none;
   flex-direction: column;
   gap: 8px;
-  width: 260px;
+  width: 100%;
   margin-bottom: 1.25rem;
 }
 
@@ -89,25 +294,32 @@ h1 {
 
 #queue {
   width: 100%;
-  max-width: 500px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
+
+#empty-msg {
+  color: #888;
+  font-size: 14px;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+/* ── QUESTION CARDS ── */
 
 .q-card {
   background: #4a4a4a;
   border: 1.5px solid #999;
   border-radius: 10px;
   padding: 14px 14px 10px;
-  position: relative;
   color: #e0e0e0;
+  width: 100%;
 }
 
 .q-text {
   font-size: 14px;
   line-height: 1.5;
-  padding-right: 24px;
   margin-bottom: 10px;
   word-break: break-word;
 }
@@ -169,4 +381,14 @@ h1 {
   background: #5a5a5a;
   border-color: #5b52d6;
   color: #a89fff;
+}
+
+/* ── LOADING STATE ── */
+
+.loading-text {
+  color: #888;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 1rem;
+  letter-spacing: 0.5px;
 }
